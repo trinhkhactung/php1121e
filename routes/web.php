@@ -12,15 +12,14 @@
 */
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
 Route::group(['prefix' => 'admin'], function () {
-    Route::get('/', function () {
-        return view('pages.dashboard');
-    })->name('admin.dashboard');
+    Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     Route::get('/student', function () {
         return view('pages.student');
