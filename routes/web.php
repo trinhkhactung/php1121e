@@ -21,9 +21,8 @@ Route::get('/', function () {
 Route::group(['prefix' => 'admin'], function () {
     Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
 
-    Route::get('/student', function () {
-        return view('pages.student');
-    })->name('admin.student');
+    Route::get('/student', 'Admin\StudentController@index')->name('admin.student');
+    Route::get('/student/data', 'Admin\StudentController@getDescription')->name('admin.student.detail');
 
     Route::get('/about', function () {
         return 'admin about';
