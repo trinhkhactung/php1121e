@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Faculty;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Models\Student;
 
 class DashboardController extends Controller
 {
@@ -57,8 +58,30 @@ class DashboardController extends Controller
 
         /** Query ORM **/
         // Select
-        $students = Student::all();
-        dd($students);
+        // $students = Student::all();
+        // $students = Student::select('name', 'phone')->get()->toArray();
+        // $students = Student::where('id', 2)->get()->toArray();
+        // $students = Student::find(2)->get()->toArray();
+
+//        $students = Student::where('id', 2)
+//            ->orWhere('facultys_id', 10)
+//            ->get()->toArray();
+
+        //$facultys = Faculty::find(40);
+//        dd($facultys->setudent);
+//        foreach ($facultys->setudent as $student){
+//            echo $student->name." ";
+//        }
+//
+//        $student = Student::find(10);
+//        dd($student->faculty->title);
+
+//        Student::where('id', 23)->update([
+//            'name' => 'Tung',
+//            'phone' => '0989888999'
+//        ]);
+
+        Student::where('id', 23)->delete();
 
         return view('pages.dashboard');
     }
